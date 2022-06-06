@@ -28,7 +28,12 @@ io.on('connection', client => {
 
         io.to(payload.para).emit('mensaje-personal',payload);
     });
-    
+    //escuchar notificacion
+    client.on('videollamada-personal',async(payload)=>{
+        console.log(payload);
+
+        io.to(payload.para).emit('videollamada-personal',payload);
+    });
 
     //desconectar cliente
     client.on('disconnect', () => {
