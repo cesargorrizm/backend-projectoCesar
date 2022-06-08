@@ -7,13 +7,19 @@ const  Usuario  = require('../models/usuario');
 
 
 const router = Router();
-
-router.get('/',(req,res,next)=>{
+const getUsuario= async(req,res= response)=>{
     const searchedField = req.query.email;
-    Usuario.find({email:{$regex:searchedField,$options:'$i'}})
-    .then(data=>{
-        res.send(data);
+
+    const  usuarios= await Usuario.find({email:{$regex:searchedField,$options:'$i'}});
+    res.json({
+        
+        usuarios
+    
     });
-});
+
+
+}
+
+router.get('/',getUsuario);
 
 module.exports=router;

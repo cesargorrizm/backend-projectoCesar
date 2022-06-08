@@ -1,4 +1,5 @@
 const { response } = require("express");
+const req = require("express/lib/request");
 const Usuario = require("../models/usuario");
 
 const getUsuarios= async(req,res= response)=>{
@@ -14,5 +15,6 @@ const getUsuarios= async(req,res= response)=>{
     
     });
 }
+
 
 module.exports = { getUsuarios };
